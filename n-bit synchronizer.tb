@@ -1,16 +1,20 @@
 module handshake_tb();
-reg clk,clk1,rst;
-wire req,ack;
-wire [7:0] data_out;
-sender dut1(clk,rst,ack,req,data_out);
-receiver dut2(clk1,rst,req,ack,data_out,data_in);
-always #5 clk=~clk;
-always #7 clk1=~clk1;
-initial begin
-clk=0;
-clk1=0;
-rst=1;
-#10 rst=0;
-#200 $finish;
-end
+  reg clk, clk1, rst;
+  wire req, ack;
+  wire [7:0] data_out;
+  wire [7:0] data_in; // Added data_in wire
+
+  sender dut1(clk, rst, ack, req, data_out);
+  receiver dut2(clk1, rst, req, ack, data_out, data_in);
+
+  always #5 clk = ~clk;   // Clock for sender
+  always #7 clk1 = ~clk1; // Clock for receiver (asynchronous)
+
+  initial begin
+    clk = 0;
+    clk1 = 0;
+    rst = 1;
+    #10 rst = 0;
+    #200 $finish;
+  end
 endmodule
