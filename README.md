@@ -62,3 +62,11 @@ ack signal. This prepares the receiver to handle the next data transfer.
 o The handshake cycle repeats for each new piece of data. The sender asserts req, 
 the receiver acknowledges with ack, and the process continues, ensuring reliable 
 data transfer between the two clock domains. 
+
+**simulation results:**
+
+![image](https://github.com/user-attachments/assets/b9dbdc59-d1f0-4130-ad6c-787c25406bbe)
+
+**schematic:**
+
+![image](https://github.com/user-attachments/assets/643754f1-09b4-460a-8625-85b9208489f6)
